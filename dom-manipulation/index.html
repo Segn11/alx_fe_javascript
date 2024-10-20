@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Quote Generator</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional: Link to your CSS file -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Quote Generator</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Dynamic Quote Generator</h1>
-        <div id="quoteDisplay" class="quote-display">
-            <!-- Random quote will be displayed here -->
-            <p>Your random quote will appear here.</p>
-        </div>
-        
-        <button id="newQuote">Show New Quote</button>
+  <h1>Dynamic Quote Generator</h1>
 
-        <label for="categoryFilter">Filter by Category:</label>
-        <select id="categoryFilter" onchange="filterQuotes()">
-            <!-- Options will be populated by JavaScript -->
-        </select>
+  <!-- Section to display the quote -->
+  <div id="quoteDisplay">Click "Show New Quote" to display a quote</div>
+  <button id="newQuote">Show New Quote</button>
 
-        <div id="addQuoteForm">
-            <!-- Form for adding new quotes will be created dynamically -->
-        </div>
+  <!-- Form to add a new quote -->
+  <div>
+    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+    <button onclick="addQuote()">Add Quote</button>
+  </div>
 
-        <!-- New "Export Quotes" button -->
-        <button id="exportQuotes" onclick="exportQuotes()">Export Quotes</button>
-    </div>
+  <!-- Dropdown for category filtering -->
+  <div>
+    <label for="categoryFilter">Filter by Category:</label>
+    <select id="categoryFilter" onchange="filterQuotes()">
+      <option value="all">All Categories</option>
+      <!-- Dynamically populated categories will appear here -->
+    </select>
+  </div>
 
-    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+  <!-- Buttons for exporting and importing quotes -->
+  <div>
+    <button onclick="exportQuotesToJson()">Export Quotes as JSON</button>
+    <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
+  </div>
+
+  <!-- Link to JavaScript file -->
+  <script src="script.js"></script>
 </body>
 </html>
